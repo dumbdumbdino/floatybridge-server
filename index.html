@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <h1>Floaty bridge server </h1>
+    <script>
+      let socket = io();
+      let el;
+
+      socket.on('time', (timeString) => {
+        el = document.getElementById('server-time');
+        el.innerHTML = 'Server time: ' + timeString;
+      });
+    </script>
+  </head>
+  <body>
+    <p id="server-time"></p>
+  </body>
+</html>
