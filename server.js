@@ -4,29 +4,11 @@ const INDEX = '/index.html';
 const server = require('express')()
   .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
-  
-/*
-
-const server = require('express')();
-const http = require('http').createServer(server);
-
-*/
-/*
-// the __dirname is the current directory from where the script is running
-server.use(express.static(__dirname));
-
-// send the user to index html page inspite of the url
-server.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'index.html'));
-});
-*/
-
-
 
 
 const io = require('socket.io')(server);
 
-
+setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
 
 let players = [];
 let playedCards = 0;
