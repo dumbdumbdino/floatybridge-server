@@ -8,7 +8,6 @@ const server = require('express')()
 
 const io = require('socket.io')(server);
 
-setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
 
 let players = [];
 let playedCards = 0;
@@ -90,8 +89,7 @@ io.on('connection', function (socket) {
     });
 });
 
-/*
-http.listen(3000, function () {
-    console.log('Server started!');
-});
-*/
+
+
+setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
+
